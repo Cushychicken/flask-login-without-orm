@@ -70,10 +70,7 @@ def index():
     username = "anonymous"
     if current_user.is_authenticated:  # type: ignore
         username = current_user.username  # type: ignore
-    return f"""
-        <h1>Hi {username}</h1>
-        <h3>Welcome to Flask Login without ORM!</h3>
-    """
+    return render_template('index.html', username=username)
 
 
 def is_safe_url(target):
@@ -118,8 +115,10 @@ def login():
 @app.get("/logout")
 @login_required
 def logout():
-    logout_user()
-    return redirect(url_for("index"))
+    if current_user.is_authenticated:  # type: ignore
+        logout_user()
+        flash('You have been successfully logged out.')
+    return redirect(url_for("login"))
 
 
 @app.get("/settings")
