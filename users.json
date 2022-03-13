@@ -5,12 +5,12 @@
         "password": "1234"
     },
     "2": {
-        "username": "username1",
+        "username": "username2",
         "email": "email1@example.com",
         "password": "1234"
     },
     "3": {
-        "username": "username1",
+        "username": "username3",
         "email": "email1@example.com",
         "password": "1234"
     }
